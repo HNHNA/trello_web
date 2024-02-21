@@ -9,7 +9,7 @@ import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import SettingsSystemDaydreamIcon from '@mui/icons-material/SettingsSystemDaydream'
 import { Box, Container } from '@mui/material'
-import theme from './theme'
+
 
 
 function ModeSelect() {
