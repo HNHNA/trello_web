@@ -21,20 +21,38 @@ const theme = extendTheme({
     }
   },
   components: {
+    MuiCssBaseline: { // ghi đè màu scroolbar
+      styleOverrides: {
+        body: {
+          '*::-webkit-scrollbar': {
+            width: '8px',
+            height: '8px'
+          },
+          '*::-webkit-scrollbar-thumb': {
+            background: '#7f8c8d',
+            borderRadius: '8px'
+          },
+          '*::-webkit-scrollbar-thumb:hover': {
+            background: '#1abc9c',
+            borderRadius: '8px'
+          }
+        }
+      }
+    },
     // Name of the component
     MuiButton: {
       styleOverrides: {
         // Name of the slot
         root: {
           // Some CSS
-          textTransform: 'none'
+          textTransform: 'none'//set chữ hoa thường
         }
       }
     },
     MuiInputLabel: {
       styleOverrides: {
         root: ({ theme }) => ({
-          color: theme.palette.primary.main,
+          color: theme.palette.primary.main, //set màu chữ trong textfield
           fontSize: '0.875rem'
         })
       }
@@ -61,6 +79,6 @@ const theme = extendTheme({
     }
   }
   //other properties
-})
+  })
 
 export default theme
