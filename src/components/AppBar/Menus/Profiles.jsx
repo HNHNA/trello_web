@@ -31,7 +31,7 @@ function Profiles() {
           aria-expanded={open ? 'true' : undefined}
         >
           <Avatar
-            sx={{ width: 30, height: 32 }}
+            sx={{ width: 34, height: 34 }}
             alt='hanzdev'
             src='https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-1/423583035_754905863249451_7899093556360386533_n.jpg?stp=cp6_dst-jpg_p320x320&_nc_cat=103&ccb=1-7&_nc_sid=5740b7&_nc_eui2=AeG2kLsBx4E7uKVNnlMddy59Z3FK7RCCa3ZncUrtEIJrdrPXt07sXvyonZe-PfVVZNPF5M2MPSsS5_YoeuZ_IDDW&_nc_ohc=wOjbiMMdRuUAX9WZM6V&_nc_ht=scontent.fsgn2-9.fna&oh=00_AfCIU5DzwPJejpZmgkar_XR0dGhaf1YL2XP_y_CV-Jsd-w&oe=65EBD6C5'
           />
