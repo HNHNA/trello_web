@@ -75,7 +75,8 @@ function BoardBar() {
         <Box sx={{ display:'flex', alignItems:'center', gap:2 }}>
           <Button variant="outlined" startIcon={<PersonAddIcon/>}>Invite</Button>
           <AvatarGroup
-            max={7}
+            total={10}
+            max={4}
             sx={{
               '& .MuiAvatar-root': {
                 width: 34,

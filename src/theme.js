@@ -1,5 +1,7 @@
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles'
-import { cyan, deepOrange, orange, teal } from '@mui/material/colors'
+// import { cyan, deepOrange, orange, teal } from '@mui/material/colors'
+
+
 // A custom theme for this app
 const theme = extendTheme({
   trello:{
@@ -7,18 +9,18 @@ const theme = extendTheme({
     boardBarHeight: '60px'
   },
   colorSchemes: {
-    light: {
-      palette: {
-        primary: teal,
-        secondary: deepOrange
-      }
-    },
-    dark: {
-      palette: {
-        primary: cyan,
-        secondary: orange
-      }
-    }
+    // light: {
+    //   palette: {
+    //     primary: teal,
+    //     secondary: deepOrange
+    //   }
+    // },
+    // dark: {
+    //   palette: {
+    //     primary: cyan,
+    //     secondary: orange
+    //   }
+    // }
   },
   components: {
     MuiCssBaseline: { // ghi đè màu scroolbar
@@ -52,7 +54,7 @@ const theme = extendTheme({
     MuiInputLabel: {
       styleOverrides: {
         root: ({ theme }) => ({
-          color: theme.palette.primary.main, //set màu chữ trong textfield
+          // color: theme.palette.primary.main, //set màu chữ trong textfield
           fontSize: '0.875rem'
         })
       }
@@ -61,24 +63,30 @@ const theme = extendTheme({
       styleOverrides: {
         // Name of the slot
         root: ({ theme }) => ({
-          color: theme.palette.primary.main,
+          // color: theme.palette.primary.main,
           fontSize: '0.875rem',
-          '.MuiOutlinedInput-notchedOutline': {
-            borderColor:theme.palette.primary.light // màu viền
-          },
-          '&:hover': {
-            '.MuiOutlinedInput-notchedOutline': {
-              borderColor:theme.palette.primary.main // hover => di chuột vào
-            }
-          },
+          // '.MuiOutlinedInput-notchedOutline': {
+          //   borderColor:theme.palette.primary.light // màu viền
+          // },
+          // '&:hover': {
+          //   '.MuiOutlinedInput-notchedOutline': {
+          //     borderColor:theme.palette.primary.main // hover => di chuột vào
+          //   }
+          // },
           '& fieldset': {
-            borderWidth: '1px ! important' // bôi đậm
+            borderWidth : '0.5px !important'
+          },
+          '&:hover fieldset': {
+            borderWidth: '1.5px !important'
+          },
+          '&.Mui-focused fieldset': {
+            borderWidth: '1.5px !important'
           }
         })
       }
     }
   }
   //other properties
-  })
+})
 
 export default theme
