@@ -1,7 +1,4 @@
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles'
-// import { cyan, deepOrange, orange, teal } from '@mui/material/colors'
-
-
 // A custom theme for this app
 const theme = extendTheme({
   trello:{
@@ -31,11 +28,11 @@ const theme = extendTheme({
             height: '8px'
           },
           '*::-webkit-scrollbar-thumb': {
-            background: '#7f8c8d',
+            background: '#dcdde1',
             borderRadius: '8px'
           },
           '*::-webkit-scrollbar-thumb:hover': {
-            background: '#1abc9c',
+            background: 'white',
             borderRadius: '8px'
           }
         }
@@ -47,22 +44,23 @@ const theme = extendTheme({
         // Name of the slot
         root: {
           // Some CSS
-          textTransform: 'none'//set chữ hoa thường
+          textTransform: 'none', //set chữ hoa thường
+          borderWidth: '1px',
+          '&:hover': { borderWidth: '2px' }
         }
       }
     },
     MuiInputLabel: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          // color: theme.palette.primary.main, //set màu chữ trong textfield
+        root: {
           fontSize: '0.875rem'
-        })
+        }
       }
     },
     MuiOutlinedInput: {
       styleOverrides: {
         // Name of the slot
-        root: ({ theme }) => ({
+        root: {
           // color: theme.palette.primary.main,
           fontSize: '0.875rem',
           // '.MuiOutlinedInput-notchedOutline': {
@@ -73,16 +71,10 @@ const theme = extendTheme({
           //     borderColor:theme.palette.primary.main // hover => di chuột vào
           //   }
           // },
-          '& fieldset': {
-            borderWidth : '0.5px !important'
-          },
-          '&:hover fieldset': {
-            borderWidth: '1.5px !important'
-          },
-          '&.Mui-focused fieldset': {
-            borderWidth: '1.5px !important'
-          }
-        })
+          '& fieldset': { borderWidth: '1px !important' }, // bôi đậm
+          '&:hover fieldset': { borderWidth: '2px !important' }, // bôi đậm
+          '&.Mui-focused fieldset': { borderWidth: '2px !important' } // bôi đậm
+        }
       }
     }
   }
