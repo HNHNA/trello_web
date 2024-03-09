@@ -64,7 +64,7 @@ function AppBar() {
 
         </Box>
 
-        <Box sx={{ display:'flex', alignItems:'center', gap:2, cursor: 'pointer' }}>
+        <Box sx={{ display:'flex', alignItems:'center', gap:2 }}>
           <TextField
             id="outlined-search"
             label="Search..."
@@ -107,13 +107,13 @@ function AppBar() {
           <ModeSelect />
 
           <Tooltip title="Notification">
-            <Badge color="secondary" variant="dot"> {/* variant="dot" = hiển thị chấm thông báo trên icon */}
-              <NotificationsNoneIcon sx={{ color: 'white' }} />
+            <Badge color="warning" variant="dot">  {/* variant="dot" = hiển thị chấm thông báo trên icon */}
+              <NotificationsNoneIcon sx={{ color: 'white', cursor: 'pointer' }} />
             </Badge>
           </Tooltip>
 
           <Tooltip title="Help">
-            <HelpOutlineIcon sx={{ color: 'white' }} />
+            <HelpOutlineIcon sx={{ color: 'white', cursor: 'pointer' }} />
           </Tooltip>
 
           <Profiles />
