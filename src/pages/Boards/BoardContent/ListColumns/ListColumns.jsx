@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Column from './Column/Column'
-import NoteAddIcon from '@mui/icons-material/NoteAdd';
+import NoteAddIcon from '@mui/icons-material/NoteAdd'
 
 
-function ListColumns() {
+function ListColumns({ columns }) {
   return (
     <Box sx={{
       bgcolor: 'inherit', // kế thừa màu lớp cha
@@ -15,9 +15,11 @@ function ListColumns() {
       overflowY: 'hidden',
       '&::-webkit-scrollbar-track': { m: 2 }
     }}>
-      <Column/>
-      <Column/>
-      <Column/>
+      {/* <Column/>*/}
+      {/* {columns?.map((column) => {
+        return (<Column key={column._id} />)
+      })} */}
+      {columns?.map(column => <Column key={column._id} column={column} />)} {/* column={column} : truyền prop column*/}
 
       {/* Add Any Column */}
       <Box sx={{
