@@ -11,7 +11,7 @@ import AttachmentIcon from '@mui/icons-material/Attachment'
 function Card({ card }) {
 
   const shouldShowCardActions = () => {
-    return card?.memberIds?.length || card?.comments?.length || card?.attachments?.length
+    return card?.memberIds?.length > 0 || card?.comments?.length > 0 || card?.attachments?.length > 0
   }
   console.log(shouldShowCardActions())
   // if (temporaryHideMedia) {
