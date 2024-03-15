@@ -14,10 +14,10 @@ function ListCards({ cards }) {
       overflowX: 'hidden',
       overflowY: 'auto',
       maxHeight: (theme) => `calc(
-      ${theme.trello.boardContentHeight} - 
-      ${theme.spacing(5)} -
-      ${(theme) => theme.trello.columnFooterHeight} -
-      ${(theme) => theme.trello.columnHeaderHeight})`,
+        ${theme.trello.boardContentHeight} - 
+        ${theme.spacing(5)} -
+        ${theme.trello.columnHeaderHeight} - 
+        ${theme.trello.columnFooterHeight})`,
 
       '&::-webkit-scrollbar-thumb': { background: '#ced0da' },
       '&::-webkit-scrollbar-thumb:hover': { background: '#bfc2cf' }

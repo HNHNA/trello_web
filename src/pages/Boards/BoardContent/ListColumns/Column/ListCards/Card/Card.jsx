@@ -13,7 +13,6 @@ function Card({ card }) {
   const shouldShowCardActions = () => {
     return card?.memberIds?.length > 0 || card?.comments?.length > 0 || card?.attachments?.length > 0
   }
-  console.log(shouldShowCardActions())
   // if (temporaryHideMedia) {
   //   return (
   //     <MuiCard sx={{
@@ -39,6 +38,7 @@ function Card({ card }) {
       <CardContent sx={{ p: 1.5, '&:last-child': { p: 1.5 } }}>
         <Typography> { card?.title } </Typography>
       </CardContent>
+
       {shouldShowCardActions() &&
       <CardActions sx={{ p: '0 4px 8px 4px' }}>
         {!!card?.memberIds.length &&

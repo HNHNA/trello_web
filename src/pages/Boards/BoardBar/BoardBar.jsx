@@ -11,6 +11,7 @@ import Tooltip from '@mui/material/Tooltip'
 import Button from '@mui/material/Button'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import { capitalizeFirstLetter } from '~/utils/formatters'
+
 const Menu_Styles = {
   color: 'white',
   bgcolor: 'transparent',

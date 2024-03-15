@@ -1,8 +1,9 @@
 import Box from '@mui/material/Box'
 import ListColumn from './ListColumns/ListColumns'
-
+import { mapOrder } from '~/utils/sorts'
 
 function BoardContent({ board } ) {
+  const orderedColumns = mapOrder(board?.columns, board.columnOrderIds, '_id')
   return (
     <div>
       {/* Box Column */}
@@ -12,7 +13,7 @@ function BoardContent({ board } ) {
         height: (theme) => theme.trello.boardContentHeight,
         p: '10px 0'
       }}>
-        <ListColumn columns={board?.columns} />
+        <ListColumn columns={orderedColumns} />
       </Box>
     </div>
   )
