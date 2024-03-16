@@ -1,12 +1,25 @@
 import Box from '@mui/material/Box'
 import ListColumn from './ListColumns/ListColumns'
 import { mapOrder } from '~/utils/sorts'
-import { DndContext } from '@dnd-kit/core'
+import { DndContext, useSensor, useSensors, MouseSensor, TouchSensor } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
 import { useEffect, useState } from 'react'
 
 
 function BoardContent({ board } ) {
+
+  //https://docs.dndkit.com/api-documentation/sensors#usesensor
+  // yêu cầu con chuột move 10px thì mới kích hoạt event, fix bug click vào columns thì gọi event không cần thiết
+  // Default set by dnd-ket nhưng còn bug  :const poitersSensor = useSensor(PointerSensor, { activationConstraint: { distance: 10 } })
+  const mouseSensor = useSensor(MouseSensor, { activationConstraint: { distance: 10 } })
+
+  // yêu cầu con chuột move 10px thì mới kích hoạt event, fix bug click vào columns thì gọi event không cần thiết
+  // Nhấn giữ 250ms và dung sai của cảm ứng 500px thì mới kích hoạt event
+  const touchSensor = useSensor(TouchSensor, { activationConstraint: { delay: 250, tolerance: 500 } })
+
+  // Ưu tiên sử dụng 2 loại sensors là mouse và touch để có trải nghiệm trên mobile tốt nhất ko bug
+  const sensors = useSensors(mouseSensor, touchSensor)
+
   //Sắp xếp Columns và kéo thả dnd-kit
   const [orderedColumns, setOerderedColumns] = useState([])
 
@@ -16,7 +29,7 @@ function BoardContent({ board } ) {
   }, [board])
 
   const handleDragEnd = (event) => {
-    console.log('handleDragEnd:', event)
+    // console.log('handleDragEnd:', event)
     const { active, over } = event
 
     // Kiểm tra nếu khồn tồn tại over (kéo linh tinh ra ngoài thì return luôn tránh lỗi)
@@ -45,7 +58,7 @@ function BoardContent({ board } ) {
 
 
   return (
-    <DndContext onDragEnd={handleDragEnd}>
+    <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
       {/* Box Column */}
       <Box sx={{
         bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2'),
