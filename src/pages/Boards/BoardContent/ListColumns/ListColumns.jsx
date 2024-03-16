@@ -21,10 +21,10 @@ function ListColumns({ columns }) {
         overflowY: 'hidden',
         '&::-webkit-scrollbar-track': { m: 2 }
       }}>
-        {/* <Column/>*/}
-        {/* {columns?.map((column) => {
+        {/* <Column/>
+        {columns?.map((column) => {
           return (<Column key={column._id} />)
-        })} */}
+        })} Viết gọn: */}
         {columns?.map(column => <Column key={column._id} column={column} />)} {/* column={column} : truyền prop column*/}
 
         {/* Add Any Column */}
