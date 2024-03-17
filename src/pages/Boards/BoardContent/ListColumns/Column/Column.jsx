@@ -29,9 +29,10 @@ function Column({ column }) {
     data: { ...column }
   })
   const dndKetColumnStyles = {
+    // tounchAction: 'none', // fix bug kéo thả trên moblie dành cho sensor dạng default
+    // Nếu dùng CSS Transform như document sẽ bị lỗi stretch link: https://github.com/clauderic/dnd-kit/issues/117
     transform: CSS.Translate.toString(transform),
     transition
-    // Nếu dùng CSS Transform như document sẽ bị lỗi stretch link: https://github.com/clauderic/dnd-kit/issues/117
   }
 
   // dropdown menu
