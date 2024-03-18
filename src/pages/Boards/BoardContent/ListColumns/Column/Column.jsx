@@ -47,10 +47,7 @@ function Column({ column }) {
   return (
     <Box
       //Drop Drag Columns
-      ref={setNodeRef}
-      style={dndKetColumnStyles}
-      {...attributes}
-      {...listeners}
+      ref={setNodeRef} style={dndKetColumnStyles} {...attributes} {...listeners}
 
       sx={{ /* Box Column 01*/
         minWidth: '300px',

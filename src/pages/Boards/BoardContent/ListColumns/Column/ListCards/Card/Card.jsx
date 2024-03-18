@@ -7,11 +7,24 @@ import CardMedia from '@mui/material/CardMedia'
 import GroupIcon from '@mui/icons-material/Group'
 import CommentIcon from '@mui/icons-material/Comment'
 import AttachmentIcon from '@mui/icons-material/Attachment'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
 function Card({ card }) {
+  //Drop Drag Columns
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: card._id,
+    data: { ...card }
+  })
+  const dndKetCardStyles = {
+    //tounchAction: 'none', // fix bug kéo thả trên moblie dành cho sensor dạng default
+    // Nếu dùng CSS Transform như document sẽ bị lỗi stretch link: https://github.com/clauderic/dnd-kit/issues/117
+    transform: CSS.Translate.toString(transform),
+    transition
+  }
 
   const shouldShowCardActions = () => {
-    return card?.memberIds?.length > 0 || card?.comments?.length > 0 || card?.attachments?.length > 0
+    return !!card?.memberIds?.length || !!card?.comments?.length || !!card?.attachments?.length
   }
   // if (temporaryHideMedia) {
   //   return (
@@ -28,11 +41,15 @@ function Card({ card }) {
   // } Ẩn Card Media
 
   return (
-    <MuiCard sx={{
-      cursor: 'poiter',
-      boxShadow: '0 1px 1px rgba(0, 0, 0, 0.2)',
-      overflow: 'unset'
-    }}>
+    <MuiCard
+      //Drop Drag Columns
+      ref={setNodeRef} style={dndKetCardStyles} {...attributes} {...listeners}
+
+      sx={{
+        cursor: 'poiter',
+        boxShadow: '0 1px 1px rgba(0, 0, 0, 0.2)',
+        overflow: 'unset'
+      }}>
       {card?.cover && <CardMedia sx={{ height: 140 }} image={card?.cover}/>}
 
       <CardContent sx={{ p: 1.5, '&:last-child': { p: 1.5 } }}>

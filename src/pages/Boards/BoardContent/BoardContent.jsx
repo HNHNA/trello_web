@@ -59,6 +59,7 @@ function BoardContent({ board } ) {
 
   return (
     <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+
       {/* Box Column */}
       <Box sx={{
         bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2'),
