@@ -21,8 +21,11 @@ Responsive Design: Ensured the application is responsive and mobile-friendly, al
 Technologies Used:
 
 Frontend: HTML, CSS, JavaScript, ReactJS
+
 Backend: Node.js, Express.js
+
 Database: MongoDB
+
 Outcome:
 
 The Trello Clone project provided hands-on experience in building a full-stack web application using modern frontend and backend technologies. It enhanced my understanding of ReactJS, state management, RESTful APIs, and real-time communication. Additionally, it showcased my ability to design and implement user-friendly interfaces and effectively collaborate within a team environment.
