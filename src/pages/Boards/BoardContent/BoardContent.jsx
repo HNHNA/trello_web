@@ -29,7 +29,7 @@ function BoardContent({ board } ) {
   }, [board])
 
   const handleDragEnd = (event) => {
-    // console.log('handleDragEnd:', event)
+    console.log('handleDragEnd:', event)
     const { active, over } = event
 
     // Kiểm tra nếu khồn tồn tại over (kéo linh tinh ra ngoài thì return luôn tránh lỗi)
