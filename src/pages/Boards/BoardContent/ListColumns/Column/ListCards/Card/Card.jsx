@@ -12,15 +12,16 @@ import { CSS } from '@dnd-kit/utilities'
 
 function Card({ card }) {
   //Drop Drag Columns
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: card._id,
     data: { ...card }
   })
-  const dndKetCardStyles = {
+  const dndKitCardStyles = {
     //tounchAction: 'none', // fix bug kéo thả trên moblie dành cho sensor dạng default
     // Nếu dùng CSS Transform như document sẽ bị lỗi stretch link: https://github.com/clauderic/dnd-kit/issues/117
     transform: CSS.Translate.toString(transform),
-    transition
+    transition,
+    opacity: isDragging ? 0.5 : undefined
   }
 
   const shouldShowCardActions = () => {
@@ -43,7 +44,7 @@ function Card({ card }) {
   return (
     <MuiCard
       //Drop Drag Columns
-      ref={setNodeRef} style={dndKetCardStyles} {...attributes} {...listeners}
+      ref={setNodeRef} style={dndKitCardStyles} {...attributes} {...listeners}
 
       sx={{
         cursor: 'poiter',

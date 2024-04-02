@@ -1,11 +1,14 @@
 import Box from '@mui/material/Box'
 import ListColumn from './ListColumns/ListColumns'
 import { mapOrder } from '~/utils/sorts'
-import { DndContext, useSensor, useSensors, MouseSensor, TouchSensor } from '@dnd-kit/core'
+import { DndContext, useSensor, useSensors, MouseSensor, TouchSensor, DragOverlay } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
 import { useEffect, useState } from 'react'
 
-
+const ACTIVE_DRAG_ITEM_TYPE ={
+  COLUMN:'ACTIVE_DRAG_ITEM_TYPE_COLUMN',
+  CARD: 'ACTIVE_DRAG_ITEM_TYPE_CARD'
+}
 function BoardContent({ board } ) {
 
   //https://docs.dndkit.com/api-documentation/sensors#usesensor
@@ -23,11 +26,23 @@ function BoardContent({ board } ) {
   //Sắp xếp Columns và kéo thả dnd-kit
   const [orderedColumns, setOerderedColumns] = useState([])
 
+  //Cùng một thời điểm chỉ có 1 phần tử được kéo column hoặc card
+  const [activeDragItemId, setActiveDragItemId] = useState([])
+  const [activeDragItemType, setActiveDragItemType] = useState([])
+  const [activeDragItemData, setActiveDragItemData] = useState([])
+
+
   useEffect(() => {
     //const orderedColumns = mapOrder(board?.columns, board.columnOrderIds, '_id')
     setOerderedColumns(mapOrder(board?.columns, board.columnOrderIds, '_id'))
   }, [board])
 
+  const handleDragStart = (event) => {
+    // console.log('handleDragStart:', event)
+    setActiveDragItemId(event?.active?.id)
+    setActiveDragItemType(event?.active?.data?.current?.columnId ? ACTIVE_DRAG_ITEM_TYPE.COLUMN : ACTIVE_DRAG_ITEM_TYPE.CARD)
+    setActiveDragItemData(event?.active?.data?.current)
+  }
   const handleDragEnd = (event) => {
     console.log('handleDragEnd:', event)
     const { active, over } = event
@@ -51,14 +66,22 @@ function BoardContent({ board } ) {
       // console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds)
 
       //Cập nhật lại state column ban đầu sau khi đã kéo thả
-      setOerderedColumns(dndOrderedColumns)
     }
-
+    setActiveDragItemId(null)
+    setActiveDragItemType(null)
+    setActiveDragItemData(null)
   }
+
+  // console.log('activeDragItemId:', activeDragItemId)
+  // console.log('activeDragItemType:', activeDragItemType)
+  // console.log('activeDragItemData:', activeDragItemData)
 
 
   return (
-    <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+    <DndContext
+      sensors={sensors}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}>
 
       {/* Box Column */}
       <Box sx={{
@@ -68,6 +91,10 @@ function BoardContent({ board } ) {
         p: '10px 0'
       }}>
         <ListColumn columns={orderedColumns} />
+        <DragOverlay>
+          {(!activeDragItemId || !activeDragItemType) && null}
+          {()}
+        </DragOverlay>
       </Box>
     </DndContext>
   )
