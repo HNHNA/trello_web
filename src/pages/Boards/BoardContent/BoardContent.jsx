@@ -29,7 +29,7 @@ function BoardContent({ board } ) {
   }, [board])
 
   const handleDragEnd = (event) => {
-    // console.log('handleDragEnd:', event)
+    console.log('handleDragEnd:', event)
     const { active, over } = event
 
     // Kiểm tra nếu khồn tồn tại over (kéo linh tinh ra ngoài thì return luôn tránh lỗi)
@@ -59,6 +59,7 @@ function BoardContent({ board } ) {
 
   return (
     <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+
       {/* Box Column */}
       <Box sx={{
         bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2'),
