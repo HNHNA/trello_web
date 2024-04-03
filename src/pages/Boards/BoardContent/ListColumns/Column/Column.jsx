@@ -48,6 +48,7 @@ function Column({ column }) {
   //Sắp xếp Cards
   const oderedCards = mapOrder(column?.cards, column?.cardOrderIds, '_id')
 
+  //phải bọc div ở đây vì vấn đề chiều cao của column khi kéo thả sẽ có bug kiểu flickering
   return (
     <div
       //Drop Drag Columns
