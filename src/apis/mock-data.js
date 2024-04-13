@@ -10,7 +10,7 @@ export const mockData = {
     type: 'public', // 'private'
     ownerIds: [], // Những users là Admin của board
     memberIds: [], // Những users là member bình thường của board
-    columnOrderIds: ['column-id-01', 'column-id-02', 'column-id-03'], // Thứ tự sắp xếp / vị trí của các Columns trong 1 boards
+    columnOrderIds: ['column-id-01', 'column-id-02', 'column-id-03', 'column-id-04'], // Thứ tự sắp xếp / vị trí của các Columns trong 1 boards
     columns: [
       {
         _id: 'column-id-01',
@@ -57,6 +57,26 @@ export const mockData = {
           { _id: 'card-id-11', boardId: 'board-id-01', columnId: 'column-id-03', title: 'Title of card 11', description: null, cover: null, memberIds: [], comments: [], attachments: [] },
           { _id: 'card-id-12', boardId: 'board-id-01', columnId: 'column-id-03', title: 'Title of card 12', description: null, cover: null, memberIds: [], comments: [], attachments: [] },
           { _id: 'card-id-13', boardId: 'board-id-01', columnId: 'column-id-03', title: 'Title of card 13', description: null, cover: null, memberIds: [], comments: [], attachments: [] }
+        ]
+      },
+      {
+        _id: 'column-id-04',
+        boardId: 'board-id-01',
+        title: 'Empty Column 04',
+        // Cách xử lí bug logic thư viện dnd-kit khi Column là rỗng:
+        // Phía FE sẽ tự tạo ra một cái card đặc biệt: Placeholder card, không liên quan tới BE
+        // Card đặc biệt này sẽ được ẩn ở giao diện UI người dùng.
+        // Cấu trúc Id của card này để unique rất đơn giản, khồng cần phải random phức tạp:
+        // "columnId-placeholder-card" ( mỗi column chỉ có thể tối đa một các Placeholder Card )
+        // Quan trọng khi tạo: phải đầy: ( _id, boardId, columnOd, FE_PlaceholderCard )
+        // Kỹ hơn nữa về cách tạo chuẩn bước nào thì sẽ ở phần tích hợp API BE vào dự án vì đây là mock_data
+        cardOrderIds: ['card-id-15-placeholder-card'],
+        cards: [
+          { _id: 'card-id-15-placeholder-card',
+            boardId: 'board-id-01',
+            columnId: 'column-id-03',
+            FE_PlaceholderCard: true
+          }
         ]
       }
     ]
