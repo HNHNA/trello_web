@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Divider from '@mui/material/Divider'
@@ -57,7 +58,7 @@ function Column({ column }) {
 
   const addNewCard = () => {
     if (!newCardTitle) {
-      // console.error('please enter column title')
+      toast.error('Please Enter Card Title', { position: 'bottom-right'})
       return
     }
     // console.log('newColumnTitle:', newColumnTitle)
@@ -186,7 +187,7 @@ function Column({ column }) {
                 size="small"
                 variant='outlined'
                 autoFocus
-                data-no-dnd = "true" // fix bug kéo thả khi bôi đen bằng customLib TouchSensor and MouseSensor 
+                data-no-dnd = "true" // fix bug kéo thả khi bôi đen bằng customLib TouchSensor and MouseSensor
                 value = {newCardTitle}
                 onChange = {(e) => setNewCardTitle(e.target.value)}
                 sx={{
