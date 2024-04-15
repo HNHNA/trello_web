@@ -186,6 +186,7 @@ function Column({ column }) {
                 size="small"
                 variant='outlined'
                 autoFocus
+                data-no-dnd = "true" // fix bug kéo thả khi bôi đen bằng customLib TouchSensor and MouseSensor 
                 value = {newCardTitle}
                 onChange = {(e) => setNewCardTitle(e.target.value)}
                 sx={{
@@ -224,7 +225,7 @@ function Column({ column }) {
                   fontSize="small"
                   sx={{
                     color: (theme) => theme.palette.warning.light,
-                    cursor: 'pointer',
+                    cursor: 'pointer'
                   }}
                   onClick = {toggleOpenNewCardForm}
                 />
