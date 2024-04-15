@@ -1,11 +1,19 @@
 import Box from '@mui/material/Box'
 import ListColumn from './ListColumns/ListColumns'
 import { mapOrder } from '~/utils/sorts'
-import { DndContext, useSensor, useSensors, MouseSensor, TouchSensor,
-  DragOverlay, defaultDropAnimationSideEffects, closestCorners,
+import {
+  DndContext,
+  useSensor,
+  useSensors,
+  // MouseSensor,
+  // TouchSensor,
+  DragOverlay,
+  defaultDropAnimationSideEffects, 
+  closestCorners,
   pointerWithin,
   getFirstCollision
 } from '@dnd-kit/core'
+import { MouseSensor, TouchSensor } from '~/customLibraries/DndKitSenSors'
 import { arrayMove } from '@dnd-kit/sortable'
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { cloneDeep, isEmpty } from 'lodash'
