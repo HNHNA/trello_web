@@ -26,7 +26,7 @@ const ACTIVE_DRAG_ITEM_TYPE ={
   COLUMN:'ACTIVE_DRAG_ITEM_TYPE_COLUMN',
   CARD: 'ACTIVE_DRAG_ITEM_TYPE_CARD'
 }
-function BoardContent({ board, createNewColumn, createNewCard } ) {
+function BoardContent({ board, createNewColumn, createNewCard, moveColumns } ) {
 
   //https://docs.dndkit.com/api-documentation/sensors#usesensor
   // yêu cầu con chuột move 10px thì mới kích hoạt event, fix bug click vào columns thì gọi event không cần thiết
@@ -279,7 +279,12 @@ function BoardContent({ board, createNewColumn, createNewCard } ) {
         //console.log('dndOrderedColumns:', dndOrderedColumns)
         // console.log('dndOrderedColumnsIds:', dndOrderedColumnsIds)
 
-        //Cập nhật lại state column ban đầu sau khi đã kéo thả
+        // gọi lên props func moveColumns nằm ở componenet Boards/_id.jsx
+        // Redux Global Store có thể gọi luôn API ở đây
+        moveColumns(dndOrderedColumns)
+
+
+        //Cập nhật lại state để tránh delay hoặc bug  Flickering lúc kéo thả
         setOerderedColumns(dndOrderedColumns)
       }
     }
@@ -365,7 +370,7 @@ function BoardContent({ board, createNewColumn, createNewCard } ) {
         <ListColumn
           columns={orderedColumns}
           createNewColumn = {createNewColumn}
-          createNewCard ={createNewCard}
+          createNewCard = {createNewCard}
         />
         <DragOverlay dropAnimation={customdropAnimation}>
           {!activeDragItemType && null}
