@@ -15,20 +15,27 @@ import CloseIcon from '@mui/icons-material/Close'
 * Nếu không đúng thì vẫn kéo thả được nhưng không có animation
 * https://github.com/clauderic/dnd-kit/issues/117
 */
-function ListColumns({ columns }) {
+function ListColumns({ columns, createNewColumn, createNewCard }) {
   // nếu openNewColumnForm (false) => toggleOpenNewColumnForm (true) và ngược lại
   const [openNewColumnForm, setOpenNewColumnForm] = useState(false)
   const toggleOpenNewColumnForm = () => setOpenNewColumnForm(!openNewColumnForm)
 
   const [newColumnTitle, setNewColumnTitle] = useState('')
 
-  const addNewColumn = () => {
+  const addNewColumn = async () => {
     if (!newColumnTitle) {
       toast.error('Please Enter Column Title')
       return
     }
-    // console.log('newColumnTitle:', newColumnTitle)
-    // Gọi API ở đây
+
+    // Tạo dự liệu để gọi API
+    const newColumnData = {
+      title: newColumnTitle
+    }
+
+    // dùng Redux Global Store có thể gọi trực tiếp API ở đây
+    // Gọi lên props function createNewColumn nằm ở component cha cao nhất Boards/_id.jsx
+    await createNewColumn(newColumnData)
 
     // Đóng trạng thái thêm Column mới & Clear Input
     toggleOpenNewColumnForm()
@@ -50,7 +57,7 @@ function ListColumns({ columns }) {
         {columns?.map((column) => {
           return (<Column key={column._id} />)
         })} Viết gọn: */}
-        {columns?.map(column => <Column key={column._id} column={column} />)} {/* column={column} : truyền prop column*/}
+        {columns?.map(column => <Column key={column._id} column={column} createNewCard={createNewCard} />)} {/* column={column} : truyền prop column*/}
 
         {/* Add Any Column */}
         { !openNewColumnForm
