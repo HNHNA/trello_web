@@ -47,7 +47,7 @@ function BoardContent({ board } ) {
 
   useEffect(() => {
     //const orderedColumns = mapOrder(board?.columns, board.columnOrderIds, '_id')
-    setOerderedColumns(mapOrder(board?.columns, board.columnOrderIds, '_id'))
+    setOerderedColumns(mapOrder(board?.columns, board?.columnOrderIds, '_id'))
   }, [board])
 
   // Tìm 1 cái Column theo cardId

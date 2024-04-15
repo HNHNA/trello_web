@@ -41,12 +41,14 @@ function BoardBar({ board }) {//object destructuring: const { board } = props  =
       '&::-webkit-scrollbar-track': { m: 2 }
     }}>
       <Box sx={{ display:'flex', alignItems:'center', gap:2 }}>
-        <Chip
-          sx={Menu_Styles}
-          icon={<DashboardIcon />}
-          label={board?.title}
-          clickable
-        />
+        <Tooltip title={board?.description}>
+          <Chip
+            sx={Menu_Styles}
+            icon={<DashboardIcon />}
+            label={board?.title}
+            clickable
+          />
+        </Tooltip>
         <Chip
           sx={Menu_Styles}
           icon={<VpnLockIcon />}
