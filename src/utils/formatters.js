@@ -14,6 +14,7 @@ export const capitalizeFirstLetter = (val) => {
 // Cấu trúc Id của card này để unique rất đơn giản, khồng cần phải random phức tạp:
 // "columnId-placeholder-card" ( mỗi column chỉ có thể tối đa một các Placeholder Card )
 // Quan trọng khi tạo: phải đầy: ( _id, boardId, columnOd, FE_PlaceholderCard )
+// video 37.2
 export const generatePlaceholderCard = (column) => {
   return {
     _id: '${column._id}-placeholder-card',
