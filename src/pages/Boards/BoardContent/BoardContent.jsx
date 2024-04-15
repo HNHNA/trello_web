@@ -8,7 +8,7 @@ import {
   // MouseSensor,
   // TouchSensor,
   DragOverlay,
-  defaultDropAnimationSideEffects, 
+  defaultDropAnimationSideEffects,
   closestCorners,
   pointerWithin,
   getFirstCollision
@@ -26,7 +26,7 @@ const ACTIVE_DRAG_ITEM_TYPE ={
   COLUMN:'ACTIVE_DRAG_ITEM_TYPE_COLUMN',
   CARD: 'ACTIVE_DRAG_ITEM_TYPE_CARD'
 }
-function BoardContent({ board } ) {
+function BoardContent({ board, createNewColumn, createNewCard } ) {
 
   //https://docs.dndkit.com/api-documentation/sensors#usesensor
   // yêu cầu con chuột move 10px thì mới kích hoạt event, fix bug click vào columns thì gọi event không cần thiết
@@ -362,7 +362,11 @@ function BoardContent({ board } ) {
         height: (theme) => theme.trello.boardContentHeight,
         p: '10px 0'
       }}>
-        <ListColumn columns={orderedColumns} />
+        <ListColumn
+          columns={orderedColumns}
+          createNewColumn = {createNewColumn}
+          createNewCard ={createNewCard}
+        />
         <DragOverlay dropAnimation={customdropAnimation}>
           {!activeDragItemType && null}
           {(activeDragItemType === ACTIVE_DRAG_ITEM_TYPE.COLUMN && <Column column={activeDragItemData}/>)}
